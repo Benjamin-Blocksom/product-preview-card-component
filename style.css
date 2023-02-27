@@ -1,0 +1,187 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@400;700&display=swap');
+
+:root {
+    --clr-primary-400: hsl(159, 36%, 37%);
+    --clr-primary-500: hsl(159, 36%, 20%);
+    --clr-secondary-200: hsl(30, 38%, 92%);
+
+    --clr-neutral-900: hsl(212, 21%, 14%);
+    --clr-neutral-400: hsl(228, 12%, 48%);
+    --clr-neutral-100: hsl(0, 0%, 100%);
+  
+    --ff-monserrat: "Montserrat", sans-serif;
+    --ff-fraunces: "Fraunces", serif;
+
+    --fw-regular: 500;
+    --fw-bold: 700;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: 0;
+    box-sizing: border-box;
+    height: 100%
+}
+  
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+    text-decoration-skip-ink: auto;
+}
+  
+/* Make images easier to work with */
+img, picture, video, canvas, svg {
+    max-width: 100%;
+    display: block;
+}
+
+/* Avoid text overflow */
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+h1, h2, h3 {
+    line-height: 1;
+}
+
+/* Inherit fonts for inputs and buttons */
+input, button, textarea, select {
+    font: inherit;
+}
+  
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+    html:focus-within {
+        scroll-behavior: auto;
+    }
+  
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+  
+address, caption, cite, code, dfn, em, strong, th, var {
+    font-style: normal;
+    font-weight: normal;
+}
+
+/* Utility Classes */
+.flex-group {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.visually-hidden:not(:focus):not(:active) {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
+
+/* Custom Styles */
+
+body {
+    -webkit-font-smoothing: antialiased; 
+    font-family: var(--ff-base);
+    font-weight: var(--fw-regular);
+    font-size: 0.875rem;
+    color: var(--clr-neutral-400);
+    background-color: var(--clr-secondary-200);
+
+    /*  for this project only */
+    display: grid;
+    place-content: center;
+    margin: 1rem;
+}
+
+/* Buttons */
+.button {
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    gap: 0.75em;
+    justify-content: center;
+    align-items: center;
+
+    border: 0;
+    border-radius: .5rem;
+    padding: .75em 1.5em;
+    background-color: var(--clr-primary-400);
+    color: var(--clr-neutral-100);
+    font-weight: var(--fw-bold);
+    font-size: 0.925rem;
+}
+
+p {
+    line-height: 1.7em;
+    color: var(--clr-neutral-400);
+    font-family: var(--ff-monserrat);
+}
+
+.button[data-icon="icon-cart"]::before {
+    content: "";
+    background-image: url("images/icon-cart.svg");
+    width: 15px;
+    height: 15px;
+}
+
+.button:is(:hover, :focus) {
+    background-color: var(--clr-primary-500);
+}
+
+.product {
+    --content-padding: 1.5rem;
+    --content-spacing: 1rem;
+
+    display: grid;
+    background-color: var(--clr-neutral-100);
+    border-radius: .5rem;
+    overflow: hidden;
+    max-width: 600px;
+}
+
+@media (min-width: 600px) {
+    .product {
+        --content-padding: 2rem;
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.product__content {
+    display: grid;
+    gap: var(--content-spacing);
+    padding: var(--content-padding);
+}
+
+.product__category {
+    font-size: 0.8rem;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+}
+
+.product__title {
+    font-size: 2rem;
+    font-family: var(--ff-fraunces);
+    color: var(--clr-neutral-900);
+}
+
+.product__price {
+    font-size: 2rem;
+    font-family: var(--ff-fraunces);
+    color: var(--clr-primary-400)
+}
+
+.product__original-price {
+    text-decoration: line-through;    
+    font-size: 1rem;
+    padding: .5em;
+}
